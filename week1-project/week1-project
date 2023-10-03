@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+#
+#
+
+import ipaddress
+
+def record_ip():
+    user_input = input(f'Please enter an IPv4 address: ')
+
+    while ipaddress.ip_address(user_input) == False:
+        print(f'You did not enter a valid IPv$ address, please try again')
+        user_input = input(f'Please enter an IPv4 address: ')
+
+    return ipaddress.ip_address(user_input)
+
+def 
