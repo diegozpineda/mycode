@@ -43,23 +43,33 @@ def get_info(network: object):
     netinfo = {}
 
     #Populate using builtin network object methods
-    netinfo[network_address] = network.network_address
-    netinfo[broadcast_address] = network.broadcast_address
-    netinfo[hostmask] = network.hostmask
-    netinfo[netmask] = network.netmask
-    netinfo[prefixlen] = network.prefixlen
-    netinfo[hosts] = network.num_addresses
+    netinfo["network_address"] = network.network_address
+    netinfo["broadcast_address"] = network.broadcast_address
+    netinfo["hostmask"] = network.hostmask
+    netinfo["netmask"] = network.netmask
+    netinfo["prefixlen"] = network.prefixlen
+    netinfo["hosts"] = network.num_addresses
 
     return netinfo
 
+#def net_info_keys(netinfo:dict,
+
 def print_netinfo(netinfo: dict):
-    for x,y in netinfo:
-        print(f'{x}:{y}')
+    # print a few newlines to nicely format output
+    delimiter = '-'
+    print(f'\n')
+    print(delimiter * 20)
+    print(f'\n')
+
+    # print key and value pairs by enumerating items
+    for  i, (k, v) in enumerate(netinfo.items()):
+        print(f'{k}: {v}')
 
 def main():
     intro_prompt()
     my_network = capture_network()
     my_network_info = get_info(my_network)
+    #print(my_network_info)
     print_netinfo(my_network_info)
 
 if __name__ == "__main__":
