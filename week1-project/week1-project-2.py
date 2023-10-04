@@ -26,18 +26,6 @@ def capture_network():
 
     return ipaddress.IPv4Network(user_input)
 
-#def get_network_address(network):
-#    
-#    return 
-#
-#def get_broadcast_address(network):
-#
-#def get_netmask_address(network):
-#
-#def get_number_hosts(network):
-#
-#def get_prefix_len(network):
-
 def get_info(network: object): 
     # Initialize New Dictionary
     netinfo = {}
