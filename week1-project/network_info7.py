@@ -76,7 +76,7 @@ def print_netinfo(netinfo: dict):
     print(f'\n')
 
     # print key and value pairs by enumerating items
-    for  i, (k, v) in enumerate(netinfo.items()):
+    for  _, (k, v) in enumerate(netinfo.items()):
         print(f'{k}: {v}')
 
 def main():
