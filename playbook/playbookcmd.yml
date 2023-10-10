@@ -1,0 +1,10 @@
+---
+- name: As simple play to test ansible.cfg
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+
+  tasks:
+
+  - name: Issue date cmd on each host
+    command: date
