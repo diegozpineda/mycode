@@ -1,0 +1,13 @@
+---
+ - name: apt playbook 01
+   hosts: planetexpress
+   connection: ssh
+   gather_facts: true
+
+   tasks:
+
+     - name: Install steam locomotive on all planetexpress hosts
+       ansible.builtin.apt:
+         name: sl
+         state: present
+       become: yes # run as sudo
