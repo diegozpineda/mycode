@@ -1,0 +1,12 @@
+---
+ - name: copy file from ctrl to hosts
+   hosts: planetexpress
+   connection: ssh
+   gather_facts: true
+
+   tasks:
+
+     - name: Copy Fry's resume to hsots
+       ansible.builtin.copy:
+         src: ~/mycode/files/fry.txt
+         dest: ~/fry.txt
