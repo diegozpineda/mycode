@@ -1,0 +1,39 @@
+---
+- name: get-url download protected file
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+     - name: Access website to validate url
+       ansible.builtin.uri:
+         method: GET
+         url: http://10.10.2.4/admin/secure.txt
+         status_code: 401
+         return_content: true
+       register: validateurl
+
+     - name: "INFO: HTTP response for URL"
+       ansible.builtin.debug:
+         var: validateurl.msg
+
+     - name: "Access same url with basic auth and download file"
+       ansible.builtin.uri:
+         method: GET
+         url: http://10.10.2.4/admin/secure.txt
+         status_code: 200
+         return_content: yes
+         url_username: sammy
+         url_password: larry
+       register: validateurl 
+
+     - name: Show content was retrieved 
+       ansible.builtin.debug:
+         var: validateurl.content
+
+     - name: put secret content in file
+       ansible.builtin.copy:
+         content: "{{ validateurl.content }}"
+         dest: ~/ansible-downloaded-the-secret-file.txt
+
+
