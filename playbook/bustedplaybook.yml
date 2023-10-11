@@ -1,0 +1,17 @@
+---
+- name: Tuesday Challenge
+  hosts: planetexpress:!farnsworth
+  connection: ssh 
+  gather_facts: yes
+
+  tasks:
+   - name: "use apt to install sl"
+     ansible.builtin.apt: 
+       name: sl
+       state: present
+     register: result
+
+   - name: "print out the variable named result"
+     ansible.builtin.debug:
+       var: result #.cache_update_time
+
