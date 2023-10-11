@@ -1,0 +1,22 @@
+---
+ - name: Playbook with the register keyword
+   hosts: planetexpress
+   gather_facts: yes
+  
+   tasks: 
+
+     - name: "Issue a trivial command"
+       ansible.builtin.command: ls /lib/
+       register: contentz_lib
+
+     - name: "display return data"
+       ansible.builtin.debug:
+         msg: "{{ contentz_lib }}"
+
+     - name: "debug stderr"
+       ansible.builtin.debug:
+         msg: "{{ contentz_lib.stderr }}"
+
+     - name: "debug stdout"
+       ansible.builtin.debug:
+         msg: "{{ contentz_lib.stdout }}"
