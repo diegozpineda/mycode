@@ -1,0 +1,14 @@
+---
+- name: Query ISS api with ansible
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+  - name: Print out to the screen
+    uri: 
+      url: http://api.open-notify.org/iss-now.json 
+    register: astrojson
+
+  - name: display contents of variable json
+    debug:
+      var: astrojson
