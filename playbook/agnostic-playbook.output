@@ -1,0 +1,341 @@
+
+PLAY [Using cli_command agnostic modules] **************************************
+
+TASK [run multiple commands on remote nodes] ***********************************
+ok: [sw-1] => (item=show version)
+ok: [sw-2] => (item=show version)
+ok: [sw-1] => (item=show interfaces)
+ok: [sw-2] => (item=show interfaces)
+
+TASK [take a peek as to what is inside of "results"] ***************************
+ok: [sw-1] => {
+    "results": {
+        "changed": false,
+        "msg": "All items completed",
+        "results": [
+            {
+                "ansible_loop_var": "item",
+                "changed": false,
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "answer": null,
+                        "check_all": false,
+                        "command": "show version",
+                        "newline": true,
+                        "prompt": null,
+                        "sendonly": false
+                    }
+                },
+                "item": "show version",
+                "stdout": "vEOS\nHardware version:    \nSerial number:       \nSystem MAC address:  aaa3.a3ab.d89c\n\nSoftware image version: 4.22.0F\nArchitecture:           i386\nInternal build version: 4.22.0F-12170486.4220F\nInternal build ID:      2c34e816-9aa7-4c63-9a32-05140aec7dbd\n\nUptime:                 0 weeks, 2 days, 7 hours and 4 minutes\nTotal memory:           2014588 kB\nFree memory:            1335328 kB",
+                "stdout_lines": [
+                    "vEOS",
+                    "Hardware version:    ",
+                    "Serial number:       ",
+                    "System MAC address:  aaa3.a3ab.d89c",
+                    "",
+                    "Software image version: 4.22.0F",
+                    "Architecture:           i386",
+                    "Internal build version: 4.22.0F-12170486.4220F",
+                    "Internal build ID:      2c34e816-9aa7-4c63-9a32-05140aec7dbd",
+                    "",
+                    "Uptime:                 0 weeks, 2 days, 7 hours and 4 minutes",
+                    "Total memory:           2014588 kB",
+                    "Free memory:            1335328 kB"
+                ]
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": false,
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "answer": null,
+                        "check_all": false,
+                        "command": "show interfaces",
+                        "newline": true,
+                        "prompt": null,
+                        "sendonly": false
+                    }
+                },
+                "item": "show interfaces",
+                "stdout": "Management1 is up, line protocol is up (connected)\n  Hardware is Ethernet, address is aaa3.a305.0457 (bia aaa3.a305.0457)\n  Internet address is 10.5.4.87/12\n  Broadcast address is 255.255.255.255\n  Address determined by DHCP\n  IP MTU 1500 bytes , BW 1000000 kbit\n  Full-duplex, 1Gb/s, auto negotiation: on, uni-link: n/a\n  Up 2 days, 7 hours, 2 minutes, 45 seconds\n  Loopback Mode : None\n  6 link status changes since last clear\n  Last clearing of \"show interface\" counters never\n  5 minutes input rate 616 bps (0.0% with framing overhead), 1 packets/sec\n  5 minutes output rate 1.19 kbps (0.0% with framing overhead), 1 packets/sec\n     19252 packets input, 1101488 bytes\n     Received 7688 broadcasts, 0 multicast\n     0 runts, 0 giants\n     0 input errors, 0 CRC, 0 alignment, 0 symbol, 0 input discards\n     0 PAUSE input\n     18173 packets output, 1152315 bytes\n     Sent 6 broadcasts, 6608 multicast\n     0 output errors, 0 collisions\n     0 late collision, 0 deferred, 0 output discards\n     0 PAUSE output",
+                "stdout_lines": [
+                    "Management1 is up, line protocol is up (connected)",
+                    "  Hardware is Ethernet, address is aaa3.a305.0457 (bia aaa3.a305.0457)",
+                    "  Internet address is 10.5.4.87/12",
+                    "  Broadcast address is 255.255.255.255",
+                    "  Address determined by DHCP",
+                    "  IP MTU 1500 bytes , BW 1000000 kbit",
+                    "  Full-duplex, 1Gb/s, auto negotiation: on, uni-link: n/a",
+                    "  Up 2 days, 7 hours, 2 minutes, 45 seconds",
+                    "  Loopback Mode : None",
+                    "  6 link status changes since last clear",
+                    "  Last clearing of \"show interface\" counters never",
+                    "  5 minutes input rate 616 bps (0.0% with framing overhead), 1 packets/sec",
+                    "  5 minutes output rate 1.19 kbps (0.0% with framing overhead), 1 packets/sec",
+                    "     19252 packets input, 1101488 bytes",
+                    "     Received 7688 broadcasts, 0 multicast",
+                    "     0 runts, 0 giants",
+                    "     0 input errors, 0 CRC, 0 alignment, 0 symbol, 0 input discards",
+                    "     0 PAUSE input",
+                    "     18173 packets output, 1152315 bytes",
+                    "     Sent 6 broadcasts, 6608 multicast",
+                    "     0 output errors, 0 collisions",
+                    "     0 late collision, 0 deferred, 0 output discards",
+                    "     0 PAUSE output"
+                ]
+            }
+        ],
+        "skipped": false
+    }
+}
+ok: [sw-2] => {
+    "results": {
+        "changed": false,
+        "msg": "All items completed",
+        "results": [
+            {
+                "ansible_loop_var": "item",
+                "changed": false,
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "answer": null,
+                        "check_all": false,
+                        "command": "show version",
+                        "newline": true,
+                        "prompt": null,
+                        "sendonly": false
+                    }
+                },
+                "item": "show version",
+                "stdout": "vEOS\nHardware version:    \nSerial number:       \nSystem MAC address:  aaa3.a379.74a2\n\nSoftware image version: 4.22.0F\nArchitecture:           i386\nInternal build version: 4.22.0F-12170486.4220F\nInternal build ID:      2c34e816-9aa7-4c63-9a32-05140aec7dbd\n\nUptime:                 0 weeks, 2 days, 7 hours and 4 minutes\nTotal memory:           2014588 kB\nFree memory:            1322060 kB",
+                "stdout_lines": [
+                    "vEOS",
+                    "Hardware version:    ",
+                    "Serial number:       ",
+                    "System MAC address:  aaa3.a379.74a2",
+                    "",
+                    "Software image version: 4.22.0F",
+                    "Architecture:           i386",
+                    "Internal build version: 4.22.0F-12170486.4220F",
+                    "Internal build ID:      2c34e816-9aa7-4c63-9a32-05140aec7dbd",
+                    "",
+                    "Uptime:                 0 weeks, 2 days, 7 hours and 4 minutes",
+                    "Total memory:           2014588 kB",
+                    "Free memory:            1322060 kB"
+                ]
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": false,
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "answer": null,
+                        "check_all": false,
+                        "command": "show interfaces",
+                        "newline": true,
+                        "prompt": null,
+                        "sendonly": false
+                    }
+                },
+                "item": "show interfaces",
+                "stdout": "Management1 is up, line protocol is up (connected)\n  Hardware is Ethernet, address is aaa3.a30f.83a2 (bia aaa3.a30f.83a2)\n  Internet address is 10.15.131.162/12\n  Broadcast address is 255.255.255.255\n  Address determined by DHCP\n  IP MTU 1450 bytes , BW 1000000 kbit\n  Full-duplex, 1Gb/s, auto negotiation: on, uni-link: n/a\n  Up 1 day, 23 hours, 17 minutes, 27 seconds\n  Loopback Mode : None\n  8 link status changes since last clear\n  Last clearing of \"show interface\" counters never\n  5 minutes input rate 611 bps (0.0% with framing overhead), 1 packets/sec\n  5 minutes output rate 1.17 kbps (0.0% with framing overhead), 1 packets/sec\n     18692 packets input, 1067651 bytes\n     Received 7679 broadcasts, 0 multicast\n     0 runts, 0 giants\n     0 input errors, 0 CRC, 0 alignment, 0 symbol, 0 input discards\n     0 PAUSE input\n     17754 packets output, 1123538 bytes\n     Sent 14 broadcasts, 6610 multicast\n     0 output errors, 0 collisions\n     0 late collision, 0 deferred, 0 output discards\n     0 PAUSE output",
+                "stdout_lines": [
+                    "Management1 is up, line protocol is up (connected)",
+                    "  Hardware is Ethernet, address is aaa3.a30f.83a2 (bia aaa3.a30f.83a2)",
+                    "  Internet address is 10.15.131.162/12",
+                    "  Broadcast address is 255.255.255.255",
+                    "  Address determined by DHCP",
+                    "  IP MTU 1450 bytes , BW 1000000 kbit",
+                    "  Full-duplex, 1Gb/s, auto negotiation: on, uni-link: n/a",
+                    "  Up 1 day, 23 hours, 17 minutes, 27 seconds",
+                    "  Loopback Mode : None",
+                    "  8 link status changes since last clear",
+                    "  Last clearing of \"show interface\" counters never",
+                    "  5 minutes input rate 611 bps (0.0% with framing overhead), 1 packets/sec",
+                    "  5 minutes output rate 1.17 kbps (0.0% with framing overhead), 1 packets/sec",
+                    "     18692 packets input, 1067651 bytes",
+                    "     Received 7679 broadcasts, 0 multicast",
+                    "     0 runts, 0 giants",
+                    "     0 input errors, 0 CRC, 0 alignment, 0 symbol, 0 input discards",
+                    "     0 PAUSE input",
+                    "     17754 packets output, 1123538 bytes",
+                    "     Sent 14 broadcasts, 6610 multicast",
+                    "     0 output errors, 0 collisions",
+                    "     0 late collision, 0 deferred, 0 output discards",
+                    "     0 PAUSE output"
+                ]
+            }
+        ],
+        "skipped": false
+    }
+}
+
+TASK [take a peek at "just" the JSON returned to the command "show version"] ***
+ok: [sw-1] => {
+    "results.results[0]": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "answer": null,
+                "check_all": false,
+                "command": "show version",
+                "newline": true,
+                "prompt": null,
+                "sendonly": false
+            }
+        },
+        "item": "show version",
+        "stdout": "vEOS\nHardware version:    \nSerial number:       \nSystem MAC address:  aaa3.a3ab.d89c\n\nSoftware image version: 4.22.0F\nArchitecture:           i386\nInternal build version: 4.22.0F-12170486.4220F\nInternal build ID:      2c34e816-9aa7-4c63-9a32-05140aec7dbd\n\nUptime:                 0 weeks, 2 days, 7 hours and 4 minutes\nTotal memory:           2014588 kB\nFree memory:            1335328 kB",
+        "stdout_lines": [
+            "vEOS",
+            "Hardware version:    ",
+            "Serial number:       ",
+            "System MAC address:  aaa3.a3ab.d89c",
+            "",
+            "Software image version: 4.22.0F",
+            "Architecture:           i386",
+            "Internal build version: 4.22.0F-12170486.4220F",
+            "Internal build ID:      2c34e816-9aa7-4c63-9a32-05140aec7dbd",
+            "",
+            "Uptime:                 0 weeks, 2 days, 7 hours and 4 minutes",
+            "Total memory:           2014588 kB",
+            "Free memory:            1335328 kB"
+        ]
+    }
+}
+ok: [sw-2] => {
+    "results.results[0]": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "answer": null,
+                "check_all": false,
+                "command": "show version",
+                "newline": true,
+                "prompt": null,
+                "sendonly": false
+            }
+        },
+        "item": "show version",
+        "stdout": "vEOS\nHardware version:    \nSerial number:       \nSystem MAC address:  aaa3.a379.74a2\n\nSoftware image version: 4.22.0F\nArchitecture:           i386\nInternal build version: 4.22.0F-12170486.4220F\nInternal build ID:      2c34e816-9aa7-4c63-9a32-05140aec7dbd\n\nUptime:                 0 weeks, 2 days, 7 hours and 4 minutes\nTotal memory:           2014588 kB\nFree memory:            1322060 kB",
+        "stdout_lines": [
+            "vEOS",
+            "Hardware version:    ",
+            "Serial number:       ",
+            "System MAC address:  aaa3.a379.74a2",
+            "",
+            "Software image version: 4.22.0F",
+            "Architecture:           i386",
+            "Internal build version: 4.22.0F-12170486.4220F",
+            "Internal build ID:      2c34e816-9aa7-4c63-9a32-05140aec7dbd",
+            "",
+            "Uptime:                 0 weeks, 2 days, 7 hours and 4 minutes",
+            "Total memory:           2014588 kB",
+            "Free memory:            1322060 kB"
+        ]
+    }
+}
+
+TASK [take a peek at "just" the JSON returned to the command "show interfaces"] ***
+ok: [sw-1] => {
+    "results.results[1]": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "answer": null,
+                "check_all": false,
+                "command": "show interfaces",
+                "newline": true,
+                "prompt": null,
+                "sendonly": false
+            }
+        },
+        "item": "show interfaces",
+        "stdout": "Management1 is up, line protocol is up (connected)\n  Hardware is Ethernet, address is aaa3.a305.0457 (bia aaa3.a305.0457)\n  Internet address is 10.5.4.87/12\n  Broadcast address is 255.255.255.255\n  Address determined by DHCP\n  IP MTU 1500 bytes , BW 1000000 kbit\n  Full-duplex, 1Gb/s, auto negotiation: on, uni-link: n/a\n  Up 2 days, 7 hours, 2 minutes, 45 seconds\n  Loopback Mode : None\n  6 link status changes since last clear\n  Last clearing of \"show interface\" counters never\n  5 minutes input rate 616 bps (0.0% with framing overhead), 1 packets/sec\n  5 minutes output rate 1.19 kbps (0.0% with framing overhead), 1 packets/sec\n     19252 packets input, 1101488 bytes\n     Received 7688 broadcasts, 0 multicast\n     0 runts, 0 giants\n     0 input errors, 0 CRC, 0 alignment, 0 symbol, 0 input discards\n     0 PAUSE input\n     18173 packets output, 1152315 bytes\n     Sent 6 broadcasts, 6608 multicast\n     0 output errors, 0 collisions\n     0 late collision, 0 deferred, 0 output discards\n     0 PAUSE output",
+        "stdout_lines": [
+            "Management1 is up, line protocol is up (connected)",
+            "  Hardware is Ethernet, address is aaa3.a305.0457 (bia aaa3.a305.0457)",
+            "  Internet address is 10.5.4.87/12",
+            "  Broadcast address is 255.255.255.255",
+            "  Address determined by DHCP",
+            "  IP MTU 1500 bytes , BW 1000000 kbit",
+            "  Full-duplex, 1Gb/s, auto negotiation: on, uni-link: n/a",
+            "  Up 2 days, 7 hours, 2 minutes, 45 seconds",
+            "  Loopback Mode : None",
+            "  6 link status changes since last clear",
+            "  Last clearing of \"show interface\" counters never",
+            "  5 minutes input rate 616 bps (0.0% with framing overhead), 1 packets/sec",
+            "  5 minutes output rate 1.19 kbps (0.0% with framing overhead), 1 packets/sec",
+            "     19252 packets input, 1101488 bytes",
+            "     Received 7688 broadcasts, 0 multicast",
+            "     0 runts, 0 giants",
+            "     0 input errors, 0 CRC, 0 alignment, 0 symbol, 0 input discards",
+            "     0 PAUSE input",
+            "     18173 packets output, 1152315 bytes",
+            "     Sent 6 broadcasts, 6608 multicast",
+            "     0 output errors, 0 collisions",
+            "     0 late collision, 0 deferred, 0 output discards",
+            "     0 PAUSE output"
+        ]
+    }
+}
+ok: [sw-2] => {
+    "results.results[1]": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "answer": null,
+                "check_all": false,
+                "command": "show interfaces",
+                "newline": true,
+                "prompt": null,
+                "sendonly": false
+            }
+        },
+        "item": "show interfaces",
+        "stdout": "Management1 is up, line protocol is up (connected)\n  Hardware is Ethernet, address is aaa3.a30f.83a2 (bia aaa3.a30f.83a2)\n  Internet address is 10.15.131.162/12\n  Broadcast address is 255.255.255.255\n  Address determined by DHCP\n  IP MTU 1450 bytes , BW 1000000 kbit\n  Full-duplex, 1Gb/s, auto negotiation: on, uni-link: n/a\n  Up 1 day, 23 hours, 17 minutes, 27 seconds\n  Loopback Mode : None\n  8 link status changes since last clear\n  Last clearing of \"show interface\" counters never\n  5 minutes input rate 611 bps (0.0% with framing overhead), 1 packets/sec\n  5 minutes output rate 1.17 kbps (0.0% with framing overhead), 1 packets/sec\n     18692 packets input, 1067651 bytes\n     Received 7679 broadcasts, 0 multicast\n     0 runts, 0 giants\n     0 input errors, 0 CRC, 0 alignment, 0 symbol, 0 input discards\n     0 PAUSE input\n     17754 packets output, 1123538 bytes\n     Sent 14 broadcasts, 6610 multicast\n     0 output errors, 0 collisions\n     0 late collision, 0 deferred, 0 output discards\n     0 PAUSE output",
+        "stdout_lines": [
+            "Management1 is up, line protocol is up (connected)",
+            "  Hardware is Ethernet, address is aaa3.a30f.83a2 (bia aaa3.a30f.83a2)",
+            "  Internet address is 10.15.131.162/12",
+            "  Broadcast address is 255.255.255.255",
+            "  Address determined by DHCP",
+            "  IP MTU 1450 bytes , BW 1000000 kbit",
+            "  Full-duplex, 1Gb/s, auto negotiation: on, uni-link: n/a",
+            "  Up 1 day, 23 hours, 17 minutes, 27 seconds",
+            "  Loopback Mode : None",
+            "  8 link status changes since last clear",
+            "  Last clearing of \"show interface\" counters never",
+            "  5 minutes input rate 611 bps (0.0% with framing overhead), 1 packets/sec",
+            "  5 minutes output rate 1.17 kbps (0.0% with framing overhead), 1 packets/sec",
+            "     18692 packets input, 1067651 bytes",
+            "     Received 7679 broadcasts, 0 multicast",
+            "     0 runts, 0 giants",
+            "     0 input errors, 0 CRC, 0 alignment, 0 symbol, 0 input discards",
+            "     0 PAUSE input",
+            "     17754 packets output, 1123538 bytes",
+            "     Sent 14 broadcasts, 6610 multicast",
+            "     0 output errors, 0 collisions",
+            "     0 late collision, 0 deferred, 0 output discards",
+            "     0 PAUSE output"
+        ]
+    }
+}
+
+PLAY RECAP *********************************************************************
+sw-1                       : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+sw-2                       : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
