@@ -1,0 +1,16 @@
+---
+- name: looping across a list with "loop"
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+  - name: "Lear debug module and loops"
+    ansible.builtin.debug:
+      msg: "Debug module can print to screen --> {{ item }}"
+    loop:
+    - "1) A hyphen is an item in list"
+    - "2) this is 2nd item in list"
+    - "3) this is 3rd item in list"
+    - "4) this is 4th item in list"
+
