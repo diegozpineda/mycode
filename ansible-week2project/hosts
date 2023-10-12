@@ -1,0 +1,7 @@
+[abchosts]
+alpha ansible_host=10.7.226.237 ansible_user=student
+bravo ansible_host=10.7.178.130 ansible_user=student
+charlie ansible_host=10.0.116.202 ansible_user=student
+
+[abchosts:vars]
+ansible_python_interpreter=/usr/bin/python3

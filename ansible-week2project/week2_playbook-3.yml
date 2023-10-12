@@ -1,0 +1,108 @@
+---
+- name: "Gather facts on abchosts"
+  hosts: abchosts
+  gather_facts: true
+  connection: ssh
+
+  tasks: 
+
+  - name: "Display OS"
+    debug:
+      var: ansible_distribution
+
+  - name: "Display Arch"
+    debug:
+      var: ansible_architecture 
+
+  - name: "Display IPv4 Net Info"
+    debug:
+      var: ansible_default_ipv4
+
+- name: "Copy file to abchosts"
+  hosts: abchosts
+  gather_facts: true
+  connection: ssh
+
+  tasks:
+
+  - name: "Copy cow file"
+    ansible.builtin.copy: 
+      src: moocow.txt 
+      dest: ~/moocow.txt
+
+- name: "Install software on abchosts" 
+  hosts: abchosts
+  gather_facts: true
+  connection: ssh
+
+  tasks:
+
+  - name: "Install lynx browser"
+    ansible.builtin.apt: 
+    #apt: update_cache=yes
+      update_cache: yes
+      name: lynx
+      state: present
+    become: yes
+
+- name: "Write OS Facts"
+  hosts: abchosts
+  gather_facts: true
+  connection: ssh
+
+  #vars:
+  #  myos: ansible_distribution 
+  #  myarch: ansible_architecture
+  #  myipinfo: ansible_default_ipv4 
+  #  mydnsinfo: ansible_dns
+
+  tasks:
+
+  - name: "Write OS Facts to file"
+    template:
+      src: templates/mytemplate.cfg.j2
+      dest: ~/myosinfo.txt
+
+- name: "Write to /etc/hosts"
+  hosts: localhost
+  gather_facts: true
+  connection: local
+
+  #vars:
+  #  myos: ansible_distribution 
+  #  myarch: ansible_architecture
+  #  myipinfo: ansible_default_ipv4 
+  #  mydnsinfo: ansible_dns
+
+  tasks:
+
+  - name: "Write hosts to /etc/hosts"
+    ansible.builtin.lineinfile:
+      path: "/etc/hosts"
+      line: "# alpha, bravo, and charlie entries"
+    become: yes
+    #become_user: root
+
+  - name: "Write alpha to /etc/hosts"
+    ansible.builtin.lineinfile:
+      path: "/etc/hosts"
+      line: 10.7.226.237 alpha
+    become: yes
+    #become_user: root
+      
+  - name: "Write hosts to /etc/hosts"
+    ansible.builtin.lineinfile:
+      path: "/etc/hosts"
+      line: 10.7.178.130 bravo
+    become: yes
+    #become_user: root
+
+  - name: "Write hosts to /etc/hosts"
+    ansible.builtin.lineinfile:
+      path: "/etc/hosts"
+      line: 10.0.116.202 charlie
+    become: yes
+    #become_user: root
+      
+      
+      
