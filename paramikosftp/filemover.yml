@@ -1,0 +1,12 @@
+---
+- name: "Moving files with ansible via ssh"
+  hosts: pa_east_nfv
+  connection: ssh
+  gather_facts: no
+  # forks: 5
+
+  tasks: 
+  - name: "Copy files from localhost to target hosts"
+    copy:
+      src: /home/student/filestocopy
+      dest: ~/
