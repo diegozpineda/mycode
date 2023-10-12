@@ -5,7 +5,8 @@
       <h2>by Diego Pineda</h2>
 
       <p>This webpage will present current market data gathered via coingecko api.</p>
-      <p>Here are the top 10 coins by Market cap, with price percentage based off last 7d</p>
+      <p>Here are the top 10 coins by Market cap, with price percentage based off last 7d.</p>
+      <p>Data is current as of {{ current_utctime }} UTC</p>
       
         {% for dict in market_data%}
         <p>

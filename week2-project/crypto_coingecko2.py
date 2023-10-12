@@ -2,6 +2,7 @@
 '''Flask server to pull data from coingecko and display on flask server'''
 
 import requests
+import datetime
 
 def build_url(path: str):
     coingecko = 'https://api.coingecko.com/api/v3/'
@@ -50,6 +51,15 @@ def get_marketdata():
 def get_coinslist():
     ''' Return list of all active coins '''
     newurl = build_url('coins/list')
+    return get_data(newurl)
+
+def get_utctime():
+    utctime = datetime.datetime.utcnow()
+    return f'{utctime}'
+
+def get_coindata(coin: str):
+    endurl = '?localization=false&tickers=false&sparkline=false'
+    newurl = build_url(f'coins/{coin}{endurl}')
     return get_data(newurl)
 
 #def main():
