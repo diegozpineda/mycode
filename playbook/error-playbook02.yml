@@ -1,0 +1,27 @@
+---
+- name: first err handeling
+  hosts: planetexpress
+  gather_facts: false
+  connection: ssh
+
+  tasks:
+    - name: a block is a group of tasks
+      block:
+
+        - name: first task
+          shell: "echo '1st task ran' > example.txt"
+
+        - name: first task
+          shell: "echo '2nd task ran' >> example.txt"
+
+        - name: first task
+          shell: "echo '3rd task ran' >> example.txt"
+
+      rescue:
+        - name: a rescue task
+          shell: "echo 'My rescue code ran. Maybe it undoes whatever the block tried to do' >> example.txt"
+
+      always:
+
+        - name: like finally, always runs
+          shell: "echo 'This always runs. Maybe it is a commit, or an entry in a log' >> example.txt"

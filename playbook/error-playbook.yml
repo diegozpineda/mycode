@@ -1,0 +1,18 @@
+---
+- name: first err handeling
+  hosts: planetexpress
+  gather_facts: false
+  connection: ssh
+
+  tasks:
+    - name: a block is a group of tasks
+      block:
+
+        - name: first task
+          shell: "echo '1st task ran' > example.txt"
+
+        - name: first task
+          shell: "echo '2nd task ran' >> example.txt"
+
+        - name: first task
+          shell: "echo '3rd task ran' >> example.txt"
