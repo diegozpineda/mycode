@@ -1,0 +1,24 @@
+---
+- name: how to prompt for vars
+  hosts: localhost
+  gather_facts: no
+
+  vars_prompt:
+    - name: "yourpassword"
+      prompt: "What is your password?"
+      ## do not reveal password
+      private: yes
+      # choose encryption
+      encrypt: "sha512_crypt"
+      # type password twice
+      confirm: yes
+      ## size of rand to have generated
+      salt_size: 7
+      # salt: slappysquirrel88 # provide your own RAND (optional)
+      ## default to this password (optional)
+      default: "qwerty"
+
+  tasks:
+    - name: Print out password
+      debug:
+        msg: "{{ yourpassword }}"
