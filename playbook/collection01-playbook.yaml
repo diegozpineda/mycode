@@ -1,0 +1,13 @@
+---
+- name: use adalovelace collection with playbook 
+  hosts: localhost
+  connection: ssh
+  gather_facts: no
+
+  collections:
+   - adalovelace.myfirstcollection
+
+  tasks:
+  - name: example collection
+    debug:
+      msg: "Any new modules, roles, or other distributables included in the role would not be usable!"
