@@ -33,15 +33,6 @@ def get_data(url: str):
     obj_read = api_obj.json()
     return obj_read
 
-#def parse_marketdata(marketdata: list):
-#    ''' Will return Key stats for top 10 crypto, in the past 7 days,
-#        by descending market cap'''
-#    parsed_data = []
-#    #marketdata = get_data(get_marketinfo('7d', 'market_cap_desc', 10))
-#    #for i in marketdata:
-#    #    coin_stats = {}
-#    #    coin_stats
-
 def get_marketdata():
     ''' Simple function to return market data
         at 7d interval, market_cap_desc, for top 10 coins'''
@@ -61,12 +52,3 @@ def get_coindata(coin: str):
     endurl = '?localization=false&tickers=false&sparkline=false'
     newurl = build_url(f'coins/{coin}{endurl}')
     return get_data(newurl)
-
-#def main():
-#    bitcoin_chart = get_data(get_marketchart('bitcoin'))    
-#    current_market = get_data(get_marketinfo('7d', 'market_cap_desc', 10))
-#    print(bitcoin_chart)
-#    print(current_market)
-
-#if __name__ == "__main__":
-#    main()
